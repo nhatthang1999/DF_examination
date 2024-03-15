@@ -20,7 +20,7 @@
     "title": "Đăng nhập"
   },
   "field": {
-    "username": "Tài khoản",
+    "email": "Email",
     "password": "Mật khẩu"
   }
 }

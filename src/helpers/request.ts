@@ -1,5 +1,4 @@
 import axios from "axios";
-import qs from "qs";
 import { CookieStorage } from "./cookie-storage";
 import { StorageKeys } from "@/constant/storage-keys";
 import { API_BASE_URL } from "@/constant";
@@ -9,12 +8,8 @@ const axiosConfig = {
   baseURL: API_BASE_URL,
   timeout: 120000,
   headers: {
-    Accept: "application/json",
     "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
   },
-  paramsSerializer: (params: any) =>
-    qs.stringify(params, { arrayFormat: "brackets" }),
 };
 
 export const request = axios.create(axiosConfig);

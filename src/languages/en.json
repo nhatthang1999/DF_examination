@@ -20,7 +20,7 @@
     "title": "Login"
   },
   "field": {
-    "username": "Username",
+    "email": "Email",
     "password": "Password"
   }
 }

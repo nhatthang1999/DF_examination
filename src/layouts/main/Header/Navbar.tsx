@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const components: { title: string; href: string; description: string }[] = [
@@ -57,6 +58,12 @@ export default function NavBar() {
   const t = useTranslations("NavBar");
 
   const locale = useLocale();
+
+  const pathname = usePathname();
+
+  if (pathname.includes("login")) {
+    return null;
+  }
 
   return (
     <NavigationMenu>

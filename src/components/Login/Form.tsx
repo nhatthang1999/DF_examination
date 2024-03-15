@@ -21,12 +21,13 @@ import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { login } from "@/services/auth";
 
-import useSWRMutation from "swr/mutation";
+import { login } from "@/services/auth";
+import { StorageKeys } from "@/constant/storage-keys";
+import { CookieStorage } from "@/helpers/cookie-storage";
 
 const formSchema = z.object({
-  username: z.string().min(2, {
+  email: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   password: z.string(),
@@ -34,23 +35,22 @@ const formSchema = z.object({
 
 export const LoginForm = () => {
   const t = useTranslations();
-  const { trigger } = useSWRMutation("/login", login);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("🚀 ~ onSubmit ~ values:", values);
-    trigger({
-      username: values.username,
-      password: values.password,
-    } as any);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const req: any = await login(values);
+    CookieStorage.setCookieData(StorageKeys.AccessToken, req?.access_token);
+    CookieStorage.setCookieData(StorageKeys.RefreshToken, req?.refresh_token);
+
+    window.location.href = "/";
   }
 
   return (
@@ -63,12 +63,12 @@ export const LoginForm = () => {
           <CardContent className="space-y-5">
             <FormField
               control={form.control}
-              name="username"
+              name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("field.username")}</FormLabel>
+                  <FormLabel>{t("field.email")}</FormLabel>
                   <FormControl>
-                    <Input placeholder={t("field.username")} {...field} />
+                    <Input placeholder={t("field.email")} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
