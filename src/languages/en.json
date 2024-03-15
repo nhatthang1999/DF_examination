@@ -1,0 +1,19 @@
+{
+  "LocaleLayout": {
+    "title": "DF Examination"
+  },
+  "NavBar": {
+    "homepage": "Homepage",
+    "service": "Service",
+    "team": "Our Team",
+    "project": "Our Project",
+    "blog": "Blog"
+  },
+  "NotFoundPage": {
+    "title": "Page Not Found",
+    "description": "Uh oh, we cannot seem to find the page you're looking for. Try going to back the previous page or contact to admin for more information"
+  },
+  "button": {
+    "login": "Login"
+  }
+}
