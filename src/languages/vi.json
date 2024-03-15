@@ -15,5 +15,12 @@
   },
   "button": {
     "login": "Đăng nhập"
+  },
+  "Login": {
+    "title": "Đăng nhập"
+  },
+  "field": {
+    "username": "Tài khoản",
+    "password": "Mật khẩu"
   }
 }

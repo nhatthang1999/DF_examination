@@ -6,7 +6,6 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Header from "@/layouts/main/Header";
 import { ThemeProvider } from "@/components/theme-provider";
-import Footer from "@/layouts/main/Footer";
 import { Toaster } from "@/components/ui/toaster";
 
 const fontSans = FontSans({
@@ -56,7 +55,6 @@ export default async function LocaleLayout({
         >
           <Header />
           {children}
-          <Footer />
           <Toaster />
         </ThemeProvider>
       </body>

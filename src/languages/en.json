@@ -15,5 +15,12 @@
   },
   "button": {
     "login": "Login"
+  },
+  "Login": {
+    "title": "Login"
+  },
+  "field": {
+    "username": "Username",
+    "password": "Password"
   }
 }
